@@ -1,6 +1,6 @@
 # переменная :
 
-value = 3
+# value = 3
 # new_value = 5.1
 # my_str = "Hello!!!"
 
@@ -106,7 +106,6 @@ value = 3
 # # path = "{}/{}.{}".format(folder, filename, ext)
 # path = f"{folder}/{filename}.{ext}"
 # print(path)
-
 
 
 ###################################################################
