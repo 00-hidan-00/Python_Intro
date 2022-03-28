@@ -13,9 +13,9 @@ print(new_value)
 # 2) У вас есть переменная value, тип - int.
 # Написать тернарный оператор для переменной new_value по такому правилу: если value меньше 100, то new_value равно 1, в противном случае - 0
 
-value = 100
+value = -300
 
-new_value = value = 1 if value < 100 else 0
+new_value = 1 if value < 100 else 0
 
 print(new_value)
 
@@ -115,7 +115,7 @@ while go_loop:
         print("Как ты это сделал ???...")
 
     continue_request = input('\nЧто бы продолжить введите "y"\nЧто бы прекратить введите "n"\n')
-    if continue_request in 'n':
+    if continue_request == 'n':
         go_loop = False
-    elif continue_request != ('n', 'y'):
+    else:
         print("Следуйте инструкции !")
