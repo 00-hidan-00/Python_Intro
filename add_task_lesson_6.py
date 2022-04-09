@@ -3,6 +3,15 @@
 # Пример:  my_str="blablacar", my_symbol="bla".
 # Вывод на экран:
 # 2
+
+my_str = "blablacar"
+my_symbol ="bla"
+
+result = my_str.count(my_symbol)
+print(result)
+
+
+
 #
 # 2) У вас есть переменная my_str, тип - str. И переменная my_symbol, тип - str.
 # Напечатать столько раз my_symbol, сколько он встречается в my_str.
@@ -11,6 +20,9 @@
 # bla
 # bla
 #
+
+
+
 # 3) У вас есть переменная my_str, тип - str. Напечатать ЧИСЛО сколько
 # РАЗНЫХ символов встречается в my_str.
 # Большая и маленькая буква считается как один символ.

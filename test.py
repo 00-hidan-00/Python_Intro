@@ -59,13 +59,48 @@
 #         elif continue_request != ('n', 'y'):
 #             print("Следуйте инструкции !")
 
-my_list = []
-my_str = 'qwerty'
+# my_str = "My name is John i'm 40"
+#
+# # for symbol in my_str:
+# #     if not symbol.isupper():
+# #         print(symbol)
+#
+# # for symbol in my_str:
+# #     if symbol.islower() and symbol.isalpha() and symbol not in "eyuioa":
+# #         print(symbol)
+#
+# result = my_str.find("John")
+# print(result)
+# my_str = "qwerty123456"
 
-# my_list.append(21)   # добавление элемента в конце списка
+# for symbol in my_str:
+#     print(symbol)
+#
+# for symbol in my_str[:6]:
+#     print(symbol)
+# #
+# for index in range(5):
+#     print(index)
+# my_str = "My name is John i'm 40"
+# # for index in range(len(my_str)):
+# #     print(index)
+# #
+# for index, symbol in enumerate(my_str):
+#     print(index, symbol)
+# my_str = "My name is Anna, i'm 40. It is dog"
+#
+# for symbol in my_str:
+#     if symbol.lower() in 'eyuioa':
+#         print(symbol)
 
-for simbol in my_str:       # объект с тем же id (наполнили предыдущий)
-    my_list.append(simbol)
 
-# my_list = list(my_str)    # объект с новым id
-print(my_list)
+
+# result = my_str.find("John")
+# print(result)
+
+
+python = 'Pyrhon is fun'            # Возвращает кортеж, содержащий часть перед первым шаблоном, сам шаблон, и часть после шаблона. Если шаблон не найден, возвращается кортеж, содержащий саму строку, а затем две пустых строки
+print(python.partition('is '))
+print(python.partition('not '))
+python = "Pyrhon is fun, isn't it"
+print(python.partition('is'))
