@@ -4,11 +4,11 @@
 # Вывод на экран:
 # 2
 
-my_str = "blablacar"
-my_symbol ="bla"
-
-result = my_str.count(my_symbol)
-print(result)
+# my_str = "blablacar"
+# my_symbol ="bla"
+#
+# result = my_str.count(my_symbol)
+# print(result)
 
 
 
@@ -19,7 +19,6 @@ print(result)
 # Вывод на экран:
 # bla
 # bla
-#
 
 
 

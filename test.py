@@ -98,9 +98,30 @@
 # result = my_str.find("John")
 # print(result)
 
+# my_list = [1, 2, 3,]
+# index_value = 2
+# value = 100
 
-python = 'Pyrhon is fun'            # Возвращает кортеж, содержащий часть перед первым шаблоном, сам шаблон, и часть после шаблона. Если шаблон не найден, возвращается кортеж, содержащий саму строку, а затем две пустых строки
-print(python.partition('is '))
-print(python.partition('not '))
-python = "Pyrhon is fun, isn't it"
-print(python.partition('is'))
+# if len(my_list) > index_value:
+#     value = my_list[index_value]
+# print(value)
+
+
+########### так не нужно делать (ниже)
+# try:
+#     value = my_list[index_value]
+#     print(value)
+# except IndexError:
+#     pass
+#     print(value)
+
+# my_list = []
+# my_str = 'qwerty'
+#
+# for simbol in my_str:
+#     my_list.append(simbol)
+# print(my_list)
+
+# file_path = 'home/zva/Pycharm/PythonIntro_14_03_22/lesson_6.py'
+# parts = file_path.rsplit('lesson_')
+# print(parts)
