@@ -125,3 +125,52 @@
 # file_path = 'home/zva/Pycharm/PythonIntro_14_03_22/lesson_6.py'
 # parts = file_path.rsplit('lesson_')
 # print(parts)
+
+
+# my_list_1 = [1, 2, 3]
+# my_list_2 = [10, 20, 30]
+# my_result = []
+# list_len = len(my_list_1)
+# for index in range(list_len):
+#     value_1 = my_list_1[index]
+#     value_2 = my_list_2[index]
+#     # my_result.append(value_1)
+#     # my_result.append(value_2)
+#     my_result += [value_1, value_2]
+# print(my_result)
+# my_list_1 = [1, 2, 3, 4]
+# my_list_2 = [10, 20, 30]
+# my_result = []
+#
+# list_len = min(len(my_list_1), len(my_list_2))
+# for index in range(list_len):
+#     value_1 = my_list_1[index]
+#     value_2 = my_list_2[index]
+#     my_result += [value_1, value_2]
+#
+# my_result += my_list_1[list_len:]
+# my_result += my_list_2[list_len:]
+#
+# print(my_result)
+# # ['ab', 'cd']
+#
+# my_str = 'adcdad'
+# my_result = []
+# my_str_1 = []
+# my_str_2 = []
+# my_str_1 += my_str[:2]
+# my_str_2 += my_str[1:3]
+# print(my_str_1,my_str_2)
+
+my_int = 10022150000
+box = ''
+# box = []
+my_int_str = str(my_int)
+for index in my_int_str[::-1]:
+    box += index
+    # box.append(index)
+    result = len(box) - 1
+    if index != "0":
+        break
+
+print(result)

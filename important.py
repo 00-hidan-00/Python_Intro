@@ -68,3 +68,16 @@ print(parts)
 
 
 ##################################################################
+
+
+# генератор списков            !!!!!!!!!!!!!!!!
+
+my_str = "qwerty"
+
+# my_list = []
+# for symbol in my_str:
+#     my_list.append(symbol)
+
+my_list = [symbol for symbol in my_str]
+
+print(my_list)
