@@ -162,15 +162,25 @@
 # my_str_2 += my_str[1:3]
 # print(my_str_1,my_str_2)
 
-my_int = 10022150000
-box = ''
-# box = []
-my_int_str = str(my_int)
-for index in my_int_str[::-1]:
-    box += index
-    # box.append(index)
-    result = len(box) - 1
-    if index != "0":
-        break
+my_dict_1 = {'city': "Dnipro",
+             'street': 'Polya',
+             'zip': 49000,
+             '1': 2,
+             '2': 22,
+             "few": 124,
+             }
+my_dict_2 = {'name': 'John',
+             "age": 24,
+             'Job': 'president',
+             'street': 'Polya',
+             'zip': 49000,
+             '1': 2,
+             "few": 124,
+             }
 
-print(result)
+new_dict = {}
+
+for key, value in my_dict_1.items():
+    if key not in my_dict_2:
+        new_dict[key] = value
+print(new_dict)
