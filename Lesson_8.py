@@ -20,6 +20,6 @@
 
 ######################################
 
-my_typle = (1, 2, 'ok')
-value_2, my_str = my_tuple
-print(value_2,my_str)
+# my_typle = (1, 2, 'ok')
+# value_2, my_str = my_tuple
+# print(value_2,my_str)
