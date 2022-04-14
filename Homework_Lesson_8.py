@@ -21,8 +21,7 @@ print(box)
 
 my_list = ['aqfwqf', 'wqwq', 'a532', '1qwq', 'aaaaaa']
 box = []
-for str in my_list:
-    symbol = str
+for symbol  in my_list:
     if symbol[0] == "a":
         box.append(symbol)
 print(box)
@@ -32,8 +31,7 @@ print(box)
 
 my_list = ['qfwaqf', 'wqwq', '5a32', '1qwq', 'aaaaaa', 'fe1awqf', '21421']
 box = []
-for str in my_list:
-    symbol = str
+for symbol in my_list:
     if "a" in symbol:
         box.append(symbol)
 print(box)

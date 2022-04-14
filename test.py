@@ -164,33 +164,9 @@
 
 # 2. Дан список строк my_list. Создать новый список в который поместить
 # элементы из my_list у которых первый символ - буква "a".
-my_dict_1 = {'city': "Dnipro",
-             'street': 'Polya',
-             'zip': 49000,
-             '1': 2,
-             "few": 124,
-             }
-my_dict_2 = {'name': 'John',
-             "age": 24,
-             'Job': 'president',
-             'street': 'Polya',
-             'zip': 49000,
-             '1': 2,
-             '2': 22,
-             "few": 124,
-             }
-
-new_dict = {}
-for key, value in my_dict_1.items():
-    if key not in my_dict_2:
-        new_dict[key] = value
-
-for key, value in my_dict_2.items():
-    if key not in my_dict_1:
-        new_dict[key] = value
-
-for key, value in my_dict_1.items():
-    if key in my_dict_2:
-        new_dict[key] = [value, my_dict_2[key]]
-print(new_dict)
-
+my_list = ['qfwaqf', 'wqawq', '5a32', '1qwq', 'aaaaaa', 'fe1awqf', '21421']
+box = []
+for symbol in my_list:
+    if "a" in symbol:
+        box.append(symbol)
+print(box)
