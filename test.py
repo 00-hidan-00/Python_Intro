@@ -162,12 +162,35 @@
 # my_str_2 += my_str[1:3]
 # print(my_str_1,my_str_2)
 
-# V2
-my_str_1 = 'aaaasdf1'
-my_str_2 = 'asdfff2'
-res_list = []
+# 2. Дан список строк my_list. Создать новый список в который поместить
+# элементы из my_list у которых первый символ - буква "a".
+my_dict_1 = {'city': "Dnipro",
+             'street': 'Polya',
+             'zip': 49000,
+             '1': 2,
+             "few": 124,
+             }
+my_dict_2 = {'name': 'John',
+             "age": 24,
+             'Job': 'president',
+             'street': 'Polya',
+             'zip': 49000,
+             '1': 2,
+             '2': 22,
+             "few": 124,
+             }
 
-for symbol in set(my_str_1).intersection(set(my_str_2)):
-    if my_str_1.count(symbol) == 1 and my_str_2.count(symbol) == 1:
-        res_list.append(symbol)
-print(res_list)
+new_dict = {}
+for key, value in my_dict_1.items():
+    if key not in my_dict_2:
+        new_dict[key] = value
+
+for key, value in my_dict_2.items():
+    if key not in my_dict_1:
+        new_dict[key] = value
+
+for key, value in my_dict_1.items():
+    if key in my_dict_2:
+        new_dict[key] = [value, my_dict_2[key]]
+print(new_dict)
+
