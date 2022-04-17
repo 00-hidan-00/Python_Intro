@@ -1,10 +1,11 @@
-surnames = ["Shevchenko", "Vasilenko", "Ovcharenko", "Borisenko"]
-domains = ["eu", "org", "best", "beer"]
+import string, random
+from random import randint, choice
+
+surnames_date = ["Shevchenko", "Vasilenko", "Ovcharenko", "Borisenko"]
+domains_date = ["eu", "org", "best", "beer"]
 
 
-def generation_email():
-    import string, random
-    from random import randint, choice
+def generation_email(surnames, domains):
     name = choice(surnames)
     domain = choice(domains)
     random_number = randint(100, 999)
@@ -13,4 +14,3 @@ def generation_email():
     return e_mail
 
 
-print(generation_email())
