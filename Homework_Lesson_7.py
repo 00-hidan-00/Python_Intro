@@ -16,10 +16,11 @@ my_int = 10022150000
 box = ''
 my_int_str = str(my_int)
 for index in my_int_str[::-1]:
-    box += index
-    result = len(box) - 1
     if index != "0":
         break
+    box += index
+    result = len(box)
+
 
 # V2.0
 # result = len(my_int_str) - len(my_int_str.rstrip('0'))
@@ -55,7 +56,7 @@ print(my_result)
 # стоит на последнем месте. Если my_list [1,2,3,4], то new_list [2,3,4,1]
 
 my_list = [1, 2, 3, 4]
-new_list = my_list[:-1] + [my_list[0]]
+new_list = my_list[1:] + [my_list[0]]
 
 print(new_list)
 
@@ -65,6 +66,7 @@ print(new_list)
 
 
 my_list = [1, 2, 3, 4, 5]
+my_list.pop(-1)
 my_list.append(my_list.pop(0))
 print(my_list)
 
@@ -75,8 +77,7 @@ print(my_list)
 # V1
 my_str = "43 больше чем 34 но меньше чем 56"
 result = 0
-my_list = my_str.split()
-for number in my_list:
+for number in my_str.split():
     if number.isdigit():
         result += int(number)
 print(result)
@@ -84,8 +85,7 @@ print(result)
 # V2
 # my_str = "43 больше чем 34 но меньше чем 56"
 # numb_list = []
-# my_list = my_str.split()
-# for number in my_list:
+# for number in my_str.split():
 #     if number.isdigit():
 #         numb_list.append(int(number))
 #         result = sum(numb_list)
