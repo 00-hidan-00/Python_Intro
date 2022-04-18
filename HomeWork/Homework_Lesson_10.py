@@ -11,6 +11,8 @@ def returns_domains_list(filename):
 
 
 result_1 = returns_domains_list('domains.txt')
+
+
 # 2
 
 def returns_surnames_list(filename):
@@ -25,6 +27,8 @@ def returns_surnames_list(filename):
 
 
 result_2 = returns_surnames_list('names.txt')
+
+
 # 3
 
 def returns___list(filename):
@@ -40,4 +44,3 @@ def returns___list(filename):
 
 
 result_3 = returns___list('authors.txt')
-
