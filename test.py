@@ -1,16 +1,29 @@
-import string, random
-from random import randint, choice
+my_dict_1 = {'city': "Dnipro",
+             '543': 3235,
+             'street': 'Polya',
+             'zip': 49000,
+             '1': 2,
+             "few": 124,
+             }
+my_dict_2 = {'name': 'John',
+             "age": 24,
+             'Job': 'president',
+             'street': 'Polya',
+             'zip': 49000,
+             '1': 2,
+             '2': 22,
+             "few": 124,
+             }
 
-surnames_date = ["Shevchenko", "Vasilenko", "Ovcharenko", "Borisenko"]
-domains_date = ["eu", "org", "best", "beer"]
+# result_2 = list(set(my_dict_1.keys()).difference(set(my_dict_2.keys())))
 
-
-def generation_email(surnames, domains):
-    name = choice(surnames)
-    domain = choice(domains)
-    random_number = randint(100, 999)
-    rand_string = ''.join(random.choice(string.ascii_lowercase) for _ in range(randint(5, 7)))
-    e_mail = (f'{name}.{random_number}@{rand_string}.{domain}').lower()
-    return e_mail
-
-
+new_dict = {}
+for key in my_dict_1:
+    if key in my_dict_2:
+        new_dict[key] = [my_dict_1[key], my_dict_2[key]]
+    else:
+        new_dict[key] = my_dict_1[key]
+for key in my_dict_2:
+    if key not in my_dict_1:
+        new_dict[key] = my_dict_2[key]
+print(new_dict)

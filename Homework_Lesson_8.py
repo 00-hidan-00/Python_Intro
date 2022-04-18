@@ -16,6 +16,11 @@ for index in range(len(my_list)):
         box.append(symbol)
 print(box)
 
+# box = my_list.copy()
+# for index, str_ in enumerate(my_list):
+#     if index % 2:
+#         box[index] = str_[::-1]
+
 # 2. Дан список строк my_list. Создать новый список в который поместить
 # элементы из my_list у которых первый символ - буква "a".
 
@@ -43,11 +48,11 @@ print(box)
 # в) Посчитать среднее количество лет всех людей из начального списка.
 ################################################
 # а)
-persons = [{"name": "John", "age": 15},
-           {"name": "Kate", "age": 7},
-           {"name": "Kate", "age": 7},
-           {"name": "Mike", "age": 45},
-           {"name": "John", "age": 15},
+persons = [{"name": "Charlotte", "age": 15},
+           {"name": "Emma", "age": 7},
+           {"name": "Olivia", "age": 45},
+           {"name": "Charlotte", "age": 15},
+           {"name": "Charlotte", "age": 15},
            ]
 min_age_list = []
 min_age_name = []
@@ -60,12 +65,6 @@ for person in persons:
 print(min_age_name)
 # ################################################
 # б)
-persons = [{"name": "Charlotte", "age": 15},
-           {"name": "Emma", "age": 7},
-           {"name": "Olivia", "age": 45},
-           {"name": "Charlotte", "age": 15},
-           {"name": "Charlotte", "age": 15},
-           ]
 names = []
 max_name = []
 for person in persons:
@@ -77,11 +76,6 @@ for person in persons:
 print(max_name)
 ################################################
 # в)
-persons = [{"name": "John", "age": 15},
-           {"name": "Kate", "age": 7},
-           {"name": "Mike", "age": 45},
-           {"name": "John", "age": 15},
-           ]
 ages = []
 for person in persons:
     ages.append(person['age'])
@@ -122,6 +116,9 @@ for key in my_dict_1:
         box += [key]
 print(box)
 
+
+# result_1 = list(set(my_dict_1.keys()).intersection(set(my_dict_2.keys())))
+
 # б) Создать список из ключей, которые есть в первом, но нет во втором словаре.
 
 box = []
@@ -129,6 +126,9 @@ for key in my_dict_1:
     if key not in my_dict_2:
         box += [key]
 print(box)
+
+#V2
+# result_2 = list(set(my_dict_1.keys()).difference(set(my_dict_2.keys())))
 
 # в) Создать новый словарь из пар {ключ:значение}, для ключей, которые есть в первом, но нет во втором словаре.
 
@@ -138,18 +138,33 @@ for key, value in my_dict_1.items():
         new_dict[key] = value
 print(new_dict)
 
+#V2
+# result_3 = {key: my_dict_1[key] for key in result_2}
+
+# result_3 = {}
+# for key in result_2:
+#     result_3[key] = my_dict_1[key]
+
 # г) Объединить эти два словаря в новый словарь по правилу:
 # если ключ есть только в одном из двух словарей - поместить пару ключ:значение,
 # если ключ есть в двух словарях - поместить пару {ключ: [значение_из_первого_словаря, значение_из_второго_словаря]},
 
 new_dict = {}
-for key, value in my_dict_1.items():
-    if key not in my_dict_2:
-        new_dict[key] = value
-for key, value in my_dict_2.items():
-    if key not in my_dict_1:
-        new_dict[key] = value
-for key, value in my_dict_1.items():
+for key in my_dict_1:
     if key in my_dict_2:
-        new_dict[key] = [value, my_dict_2[key]]
+        new_dict[key] = [my_dict_1[key], my_dict_2[key]]
+    else:
+        new_dict[key] = my_dict_1[key]
+for key in my_dict_2:
+    if key not in my_dict_1:
+        new_dict[key] = my_dict_2[key]
 print(new_dict)
+
+#V2
+# result_4 = my_dict_1.copy()
+# for key in my_dict_2:
+#     if key in result_4:
+#         result_4[key] = [result_4[key], my_dict_2[key]]
+#     else:
+#         result_4[key] = my_dict_2[key]
+# print(result_4)
