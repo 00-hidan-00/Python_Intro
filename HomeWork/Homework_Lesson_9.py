@@ -93,6 +93,6 @@ def generation_email(surnames, domains):
     domain = choice(domains)
     random_number = randint(100, 999)
     rand_string = ''.join(random.choice(string.ascii_lowercase) for _ in range(randint(5, 7)))
-    e_mail = (f'{name}.{random_number}@{rand_string}.{domain}').lower()
-    return e_mail
+    return (f'{name}.{random_number}@{rand_string}.{domain}').lower()
 
+e_mail = generation_email(surnames_date, domains_date)
