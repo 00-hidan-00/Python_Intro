@@ -1,6 +1,6 @@
 # 1
 
-def returns_domains_list(filename):
+def returns_domains(filename: str) -> list:
     with open(filename, 'r') as my_file:
         data = my_file.read()
         domains_list = []
@@ -10,12 +10,12 @@ def returns_domains_list(filename):
         return domains_list
 
 
-result_1 = returns_domains_list('domains.txt')
+result_1 = returns_domains('domains.txt')
 
 
 # 2
 
-def returns_surnames_list(filename):
+def return_surnames(filename: str) -> list:
     with open(filename, 'r') as my_file:
         data = my_file.read()
         surnames_list = []
@@ -26,21 +26,21 @@ def returns_surnames_list(filename):
         return surnames_list
 
 
-result_2 = returns_surnames_list('names.txt')
+result_2 = return_surnames('names.txt')
 
 
 # 3
 
-def returns___list(filename):
+def return_calendar_dates_and_events(filename: str) -> list:
     with open(filename, 'r') as my_file:
         data = my_file.read()
-        l_list = []
+        calendar_dates_and_events_list = []
         for line in (data.split('\n')):
             if '-' in line:
-                event = line.split('-')[0]
-                calendar_date = line.split('-', 1)[1]
-                l_list.append({event: calendar_date})
-        return l_list
+                calendar_date = line.split('-')[0]
+                event = line.split('-', 1)[1]
+                calendar_dates_and_events_list.append({calendar_date: event})
+        return calendar_dates_and_events_list
 
 
-result_3 = returns___list('authors.txt')
+result_3 = return_calendar_dates_and_events('authors.txt')
