@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 # 1
 
@@ -13,7 +14,7 @@ def return_files_dirs_names(path) -> dict:
         filepath = os.path.join(path, filename)
         if os.path.isfile(filepath):
             files_list.append(filename)
-        if os.path.isdir(filepath):
+        elif os.path.isdir(filepath):
             dirs_list.append(filename)
     files_dirs_names = {'filenames': files_list,
                         'dirnames': dirs_list}
@@ -28,17 +29,12 @@ status = False
 
 
 def return_files_dirs_names_sort(result_1, status) -> dict:
-    for key, value in result_1.items():
-        if key == 'filenames':
-            files_list = value
-        if key == 'dirnames':
-            dirs_list = value
-    if status == True:
-        files_dirs_names_dict_sort = {'filenames': sorted(files_list),
-                                      'dirnames': sorted(dirs_list)}
+    if status:
+        files_dirs_names_dict_sort = {'filenames': sorted(result_1["filenames"]),
+                                      'dirnames': sorted(result_1["dirnames"])}
     else:
-        files_dirs_names_dict_sort = {'filenames': sorted(files_list, reverse=True),
-                                      'dirnames': sorted(dirs_list, reverse=True)}
+        files_dirs_names_dict_sort = {'filenames': sorted(result_1["filenames"], reverse=True),
+                                      'dirnames': sorted(result_1["dirnames"], reverse=True)}
     return files_dirs_names_dict_sort
 
 
@@ -46,22 +42,30 @@ result_2 = return_files_dirs_names_sort(result_1, status)
 
 # 3
 
-file_name = 'test.py'
+file_name = 'tguuhnestpy'
 
 
 def add_files_dirs_names(result_1, file_name) -> dict:
-    for key, value in result_1.items():
-        if key == 'filenames':
-            files_list = value
-        if key == 'dirnames':
-            dirs_list = value
-    if os.path.isfile(file_name):
-        files_list.append(file_name)
-    if os.path.isdir(file_name):
-        dirs_list.append(file_name)
-    add_files_dirs_names = {'filenames': files_list,
-                            'dirnames': dirs_list}
+    add_files_dirs_names = {'filenames': result_1["filenames"],
+                            'dirnames': result_1["dirnames"]}
+    if '.' in file_name:
+        result_1["filenames"].append(file_name)
+    else:
+        result_1["dirnames"].append(file_name)
     return add_files_dirs_names
 
 
 result_3 = add_files_dirs_names(result_1, file_name)
+
+# 4
+
+new_file_name = 'testt'
+
+
+def create_dir(result_1, new_file_name):
+    for value in result_1.values():
+        if new_file_name not in value:
+            os.makedirs(Path(path, new_file_name), exist_ok=True)
+
+
+create_dir(result_1, file_name)
