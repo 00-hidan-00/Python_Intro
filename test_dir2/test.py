@@ -3,7 +3,7 @@ from pathlib import Path
 
 # 1
 
-path = 'test_dir'
+path = 'test_dir2'
 
 
 def return_files_dirs_names(path) -> dict:
@@ -23,6 +23,7 @@ def return_files_dirs_names(path) -> dict:
 
 result_1 = return_files_dirs_names(path)
 
+print(result_1)
 # 2
 
 status = True
@@ -38,7 +39,7 @@ def return_files_dirs_names_sort(result_1, status) -> dict:
 
 
 result_2 = return_files_dirs_names_sort(result_1, status)
-
+print(result_2)
 # 3
 
 file_name = 'tguuhnestpy'
@@ -55,40 +56,24 @@ def add_files_dirs_names(result_1, file_name) -> dict:
 
 
 result_3 = add_files_dirs_names(result_1, file_name)
-
+print(result_3)
 # 4
 
-# file_name = "aaaaaaaaaa.py"
-# dir_name = "test_dir"
-#
-#
-# def create_dir(result_1, file_name):
-#     for value in result_1.values():
-#         if file_name not in value:
-#             if '.' in file_name:
-#                 _ = open(Path(path, file_name), 'w')
-#             else:
-#                 os.makedirs(Path(path, file_name), exist_ok=True)
-#
-#
-# create_dir(result_1, file_name)
-# print(create_dir)
+file_name = "aaaaaaaaaa.py"
+dir_name = "test_dir2"
 
 
-dir_name = 'test_dir2'
+def create_dir(result_1, file_name):
+    for value in result_1.values():
+        if file_name not in value:
+            if '.' in file_name:
+                _ = open(Path(path, file_name), 'w')
+            else:
+                os.makedirs(Path(path, file_name), exist_ok=True)
 
 
-def create_dir(result_1, dir_name):
-    dir_list = os.listdir(dir_name)
-    for filename in dir_list:
-        for value in result_1.values():
-            if filename not in value:
-                if '.' in filename:
-                    _ = (open(Path(path, filename), 'w')).close()
-                else:
-                    os.makedirs(Path(path, filename), exist_ok=True)
+create_dir(result_1, file_name)
+print(create_dir)
 
 
-create_dir(result_1, dir_name)
-result_4 = create_dir(result_1, dir_name)
-print(result_4)
+
