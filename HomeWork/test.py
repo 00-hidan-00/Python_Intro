@@ -1,14 +1,12 @@
-def return_calendar_dates(filename: str) -> list:
-    with open(filename, 'r') as my_file:
-        data = my_file.read()
-        calendar_dates = []
-        for line in (data.split('\n')):
-            if '-' in line:
-                calendar_date = line.split('-')[0]
-                calendar_dates.append({"date": calendar_date})
-        return calendar_dates
+#subsidiary
+
+# def return_dict_values(result_1):
+#     for key, value in result_1.items():
+#         if key == 'filenames':
+#             files_list = value
+#         if key == 'dirnames':
+#             dirs_list = value
+#     return files_list, dirs_list
 
 
-result_3 = return_calendar_dates('authors.txt')
-
-print(result_3)
+# files_list, dirs_list = return_dict_values(result_1)
