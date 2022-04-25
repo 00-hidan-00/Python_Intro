@@ -54,22 +54,25 @@ def add_files_dirs_names(result_1, file_name) -> dict:
 
 
 result_3 = add_files_dirs_names(result_1, file_name)
-print(result_3)
+
 # 4
 
 dir_name = 'test_dir2'
 
 
 def create_dir(result_1, dir_name):
+    if '.' in dir_name:
+        _ = (open(Path(path, dir_name), 'w')).close()
+    else:
+        os.makedirs(Path(path, dir_name), exist_ok=True)
     dir_list = os.listdir(dir_name)
     for filename in dir_list:
         for value in result_1.values():
             if filename not in value:
                 if '.' in filename:
-                    _ = (open(Path(path, filename), 'w')).close()
+                    _ = (open(Path(path,dir_name, filename), 'w')).close()
                 else:
-                    os.makedirs(Path(path, filename), exist_ok=True)
+                    os.makedirs(Path(path,dir_name, filename), exist_ok=True)
 
 
 create_dir(result_1, dir_name)
-
