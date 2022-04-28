@@ -1,5 +1,5 @@
 import os
-from pathlib import Path
+import shutil
 
 # 1
 
@@ -61,18 +61,13 @@ dir_name = 'test_dir2'
 
 
 def create_dir(result_1, dir_name):
-    if '.' in dir_name:
-        _ = (open(Path(path, dir_name), 'w')).close()
-    else:
-        os.makedirs(Path(path, dir_name), exist_ok=True)
-    dir_list = os.listdir(dir_name)
-    for filename in dir_list:
+    for filename in os.listdir(dir_name):
         for value in result_1.values():
             if filename not in value:
-                if '.' in filename:
-                    _ = (open(Path(path,dir_name, filename), 'w')).close()
-                else:
-                    os.makedirs(Path(path,dir_name, filename), exist_ok=True)
+                if os.path.isfile(os.path.join(dir_name, filename)):
+                    shutil.copy(os.path.join(dir_name, filename), os.path.join(path, filename))
+                elif os.path.isdir(os.path.join(dir_name, filename)):
+                    shutil.copytree(os.path.join(dir_name, filename), os.path.join(path, filename), dirs_exist_ok=True)
 
 
 create_dir(result_1, dir_name)

@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import shutil
 
 # 1
 
@@ -29,66 +30,45 @@ status = True
 
 
 def return_files_dirs_names_sort(result_1, status) -> dict:
-    files_dirs_names_dict_sort = {'filenames': sorted(result_1["filenames"], reverse=True),
-                                  'dirnames': sorted(result_1["dirnames"], reverse=True)}
     if status:
-        files_dirs_names_dict_sort = {'filenames': sorted(result_1["filenames"]),
-                                      'dirnames': sorted(result_1["dirnames"])}
-    return files_dirs_names_dict_sort
+        result_1["filenames"].sort()
+        result_1["dirnames"].sort()
+    else:
+        result_1["filenames"].sort(reverse=True)
+        result_1["dirnames"].sort(reverse=True)
+    return result_1
 
 
 result_2 = return_files_dirs_names_sort(result_1, status)
 
 # 3
 
-file_name = 'tguuhnestpy'
+file_name = 'testtw.qfw'
 
 
 def add_files_dirs_names(result_1, file_name) -> dict:
-    add_files_dirs_names = {'filenames': result_1["filenames"],
-                            'dirnames': result_1["dirnames"]}
     if '.' in file_name:
         result_1["filenames"].append(file_name)
     else:
         result_1["dirnames"].append(file_name)
-    return add_files_dirs_names
+    return result_1
 
 
 result_3 = add_files_dirs_names(result_1, file_name)
 
 # 4
 
-# file_name = "aaaaaaaaaa.py"
-# dir_name = "test_dir"
-#
-#
-# def create_dir(result_1, file_name):
-#     for value in result_1.values():
-#         if file_name not in value:
-#             if '.' in file_name:
-#                 _ = open(Path(path, file_name), 'w')
-#             else:
-#                 os.makedirs(Path(path, file_name), exist_ok=True)
-#
-#
-# create_dir(result_1, file_name)
-# print(create_dir)
-
-
 dir_name = 'test_dir2'
 
 
 def create_dir(result_1, dir_name):
-    dir_list = os.listdir(dir_name)
-    for filename in dir_list:
+    for filename in os.listdir(dir_name):
         for value in result_1.values():
             if filename not in value:
-                if '.' in filename:
-                    _ = (open(Path(path, filename), 'w')).close()
-                else:
-                    os.makedirs(Path(path, filename), exist_ok=True)
+                if os.path.isfile(os.path.join(dir_name, filename)):
+                    shutil.copy(os.path.join(dir_name, filename), os.path.join(path, filename))
+                elif os.path.isdir(os.path.join(dir_name, filename)):
+                    shutil.copytree(os.path.join(dir_name, filename), os.path.join(path, filename), dirs_exist_ok=True)
 
 
 create_dir(result_1, dir_name)
-result_4 = create_dir(result_1, dir_name)
-print(result_4)
