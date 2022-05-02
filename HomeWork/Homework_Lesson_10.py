@@ -44,4 +44,6 @@ def return_calendar_dates(filename: str) -> list:
 
 result_3 = return_calendar_dates('authors.txt')
 
+print(result_1)
+print(result_2)
 print(result_3)
