@@ -135,7 +135,7 @@ print(new_str)
 file_path = 'home/zva/Pycharm/PythonIntro_14_03_22/lesson_6.py'
 parts = file_path.split('/', 2)    # .split разрезает все (без параметра), с параметром разрезает количество, .rsplit делает все тоже самое только с обратной стороны
 print(parts)
-parts[-1] = 'test.txt'
+parts[-1] = 'to_test_dir.txt'
 file_path = "/".join(parts)
 print(file_path)
 

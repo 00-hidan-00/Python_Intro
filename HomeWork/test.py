@@ -4,7 +4,7 @@ import shutil
 
 # 1
 
-path = 'test_dir'
+path = 'from_test_dir/from_test_dir'
 
 
 def return_files_dirs_names(path) -> dict:

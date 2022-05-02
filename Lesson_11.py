@@ -3,7 +3,7 @@
 # типы переменных
 # импорт функций
 
-def read_txt_file(filename='test.txt'):
+def read_txt_file(filename='to_test_dir.txt'):
     with open(filename, 'r') as my_file:
         data = my_file.read()
     return data
@@ -35,7 +35,7 @@ email = generation_email(surnames=surnames_date, domains=domains_date)    # им
 
 ###############################################
 
-def read_txt_file(filename='test.txt', debug_mode=DEBUG_MODE):
+def read_txt_file(filename='to_test_dir.txt', debug_mode=DEBUG_MODE):
     with open(filename, 'r', encoding='utf-8') as my_file:
         data = my_file.read()
     if debug_mode:
@@ -55,7 +55,7 @@ get_args(1, 2, 'qwe', name="John", age=12)
 
 ###############################################
 
-def read_txt_file(filename: str = 'test.txt', debug_mode: bool = True) -> str:
+def read_txt_file(filename: str = 'to_test_dir.txt', debug_mode: bool = True) -> str:
     with open(filename, 'r', encoding='utf-8') as my_file:
         data = my_file.read()
     if debug_mode:

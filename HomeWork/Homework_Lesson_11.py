@@ -1,9 +1,9 @@
 import os
-import shutil
+# import shutil
 
 # 1
 
-path = 'test_dir'
+path = 'from_test_dir'
 
 
 def return_files_dirs_names(path) -> dict:
@@ -25,7 +25,7 @@ result_1 = return_files_dirs_names(path)
 
 # 2
 
-status = True
+status = False
 
 
 def return_files_dirs_names_sort(result_1, status) -> dict:
@@ -39,7 +39,7 @@ def return_files_dirs_names_sort(result_1, status) -> dict:
 
 
 result_2 = return_files_dirs_names_sort(result_1, status)
-
+print(result_2)
 # 3
 
 file_name = 'testtw.qfw'
@@ -57,17 +57,33 @@ result_3 = add_files_dirs_names(result_1, file_name)
 
 # 4
 
-dir_name = 'test_dir2'
+dir_name = 'to_test_dir'
 
 
 def create_dir(result_1, dir_name):
-    for filename in os.listdir(dir_name):
-        for value in result_1.values():
-            if filename not in value:
-                if os.path.isfile(os.path.join(dir_name, filename)):
-                    shutil.copy(os.path.join(dir_name, filename), os.path.join(path, filename))
-                elif os.path.isdir(os.path.join(dir_name, filename)):
-                    shutil.copytree(os.path.join(dir_name, filename), os.path.join(path, filename), dirs_exist_ok=True)
-
+    for value  in result_1["filenames"]:
+        file_path = os.path.join(dir_name, value)
+        with open(file_path, 'w') as file:
+            file.close()
+    for value in result_1["dirnames"]:
+        file_path = os.path.join(dir_name, value)
+        os.makedirs(file_path, exist_ok=True)
 
 create_dir(result_1, dir_name)
+
+
+# функция сохдает файлы из заданой директории в изначальную
+# dir_name = 'from_test_dir'
+#
+#
+# def create_dir(result_1, dir_name):
+#     for filename in os.listdir(dir_name):
+#         for value in result_1.values():
+#             if filename not in value:
+#                 if os.path.isfile(os.path.join(dir_name, filename)):
+#                     shutil.copy(os.path.join(dir_name, filename), os.path.join(path, filename))
+#                 elif os.path.isdir(os.path.join(dir_name, filename)):
+#                     shutil.copytree(os.path.join(dir_name, filename), os.path.join(path, filename), dirs_exist_ok=True)
+#
+#
+# create_dir(result_1, dir_name)

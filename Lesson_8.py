@@ -23,11 +23,11 @@ person = {'name': 'John',
 print(person['age'])
 print(person['address']['city'])
 
-test_dict = {1: 'test',
+test_dict = {1: 'to_test_dir',
              2.3: 'test_2',
              (1, 2): 1000,
-             # [1,2]: 'test'          # спосок в словаре не может быть ! ( ток не изменяемые)
-             (tuple([1, 2]), 1): 'test'
+             # [1,2]: 'to_test_dir'          # спосок в словаре не может быть ! ( ток не изменяемые)
+             (tuple([1, 2]), 1): 'to_test_dir'
              }
 
 print(test_dict[tuple([1, 2]), 1])
@@ -54,9 +54,9 @@ print(value, my_result)
 
 test_dict = dict()
 test_dict['new_key'] = 100
-test_dict.update({'test': 'value'})     # добавление ( может перезаписать )
+test_dict.update({'to_test_dir': 'value'})     # добавление ( может перезаписать )
 
-my_dict = {'test': 'value',
+my_dict = {'to_test_dir': 'value',
            'test_2': '1'}     # создание
 test_dict.update(my_dict)
 
@@ -66,7 +66,7 @@ get_value_2 = test_dict['new_key']
 get_value = test_dict.get('key', -1)    # НЕ получим ошибку
 get_value_2 = test_dict['key']      # получим ошибку
 
-pop_value = test_dict.pop('test')      # возвращает/удаляет часть словаря по ключу
+pop_value = test_dict.pop('to_test_dir')      # возвращает/удаляет часть словаря по ключу
 print(pop_value)
 
 ######################################
@@ -172,7 +172,7 @@ value_2, value_1 = tmp
 
 ######################################
 
-my_tuple = (1, 2, 'ok', 'test', 200)
+my_tuple = (1, 2, 'ok', 'to_test_dir', 200)
 
 value_1, value_2 = my_tuple[:2]
 print(my_tuple)

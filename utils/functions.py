@@ -8,7 +8,7 @@ def read_txt_file_as_str(filename: str) -> str:
 
 if __name__ == "__main__":
     print('>>>>>>>>>>>', __name__)
-    data = read_txt_file_as_str("test.txt")
+    data = read_txt_file_as_str("to_test_dir.txt")
     print('>>>>>>>>>>>', data)
 
 

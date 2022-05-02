@@ -10,11 +10,11 @@ import csv
 ##################### strings
 
 
-# test_dict = '{"test": 123}'
+# test_dict = '{"to_test_dir": 123}'
 # data = json.loads(test_dict)
 # data
-# {'test': 123}
-# data['test'] = 321
+# {'to_test_dir': 123}
+# data['to_test_dir'] = 321
 # test_dict_2 = json.dumps(data)
 
 
@@ -37,7 +37,7 @@ import csv
 #         json.dump(data, file, indent=2)
 #
 #
-# filename = "test.json"
+# filename = "to_test_dir.json"
 # filename_out = "Lesson_12_out.json"
 # data = read_txt_file(filename)
 # data = read_json_file(filename)
@@ -61,7 +61,7 @@ import csv
 #         writer = csv.writer(file)
 #         writer.writerows(data)
 #
-# filename = "test.csv"
+# filename = "to_test_dir.csv"
 # data = read_csv_file(filename)
 # header = data.pop(0)
 # # header.append('Total')
@@ -92,7 +92,7 @@ import csv
 #         writer.writerows(data)
 #
 #
-# filename = "test.csv"
+# filename = "to_test_dir.csv"
 # data = read_csv_file_as_dict(filename)
 # for row in data:
 #     row["Total"] = int(row["Price"]) + int(row["Sum"])
