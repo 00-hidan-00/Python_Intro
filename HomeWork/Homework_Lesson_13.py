@@ -53,9 +53,8 @@ class PlayWithFolder:
     # 4
 
     def create_dir(self):
-
+        dir_list = os.listdir(self.dir_name)
         for value in self.result_1["filenames"]:
-            dir_list = os.listdir(self.dir_name)
             file_path = os.path.join(self.dir_name, value)
             if not value in dir_list:
                 with open(file_path, 'w') as file:
