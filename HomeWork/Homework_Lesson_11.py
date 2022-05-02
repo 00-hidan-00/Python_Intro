@@ -63,13 +63,11 @@ dir_name = 'to_test_dir'
 def create_dir(result_1, dir_name):
     for value  in result_1["filenames"]:
         dir_list = os.listdir(dir_name)
-        file_path = os.path.join(dir_name, value)
         if not value in dir_list:
-            with open(file_path, 'w') as file:
+            with open(os.path.join(dir_name, value), 'w') as file:
                 file.close()
     for value in result_1["dirnames"]:
-        file_path = os.path.join(dir_name, value)
-        os.makedirs(file_path, exist_ok=True)
+        os.makedirs(os.path.join(dir_name, value), exist_ok=True)
 
 create_dir(result_1, dir_name)
 
