@@ -1,12 +1,12 @@
 import os
+
+
 # import shutil
 
 # 1
 
-path = 'from_test_dir'
 
-
-def return_files_dirs_names(path) -> dict:
+def return_files_dirs_names(path: str) -> dict:
     list_dir = os.listdir(path)
     files_list = []
     dirs_list = []
@@ -21,47 +21,46 @@ def return_files_dirs_names(path) -> dict:
     return files_dirs_names
 
 
-result_1 = return_files_dirs_names(path)
-
+result_1 = return_files_dirs_names('from_test_dir')
+print(result_1)
 # 2
 
 status = False
 
 
-def return_files_dirs_names_sort(result_1, status) -> dict:
+def return_files_dirs_names_sort(result_1: dict, status=True) -> dict:
     if status:
         result_1["filenames"].sort()
         result_1["dirnames"].sort()
     else:
-        result_1["filenames"].sort(reverse=True)
-        result_1["dirnames"].sort(reverse=True)
+        result_1["filenames"].sort(reverse=not status)
+        result_1["dirnames"].sort(reverse=not status)
     return result_1
 
 
 result_2 = return_files_dirs_names_sort(result_1, status)
 print(result_2)
+
+
 # 3
 
-file_name = 'testtw.qfw'
 
+def add_files_dirs_names(result_1: dict, file_name: str) -> dict:
+    key = "filenames" if '.' in file_name else "dirnames"
 
-def add_files_dirs_names(result_1, file_name) -> dict:
-    if '.' in file_name:
-        result_1["filenames"].append(file_name)
-    else:
-        result_1["dirnames"].append(file_name)
+    result_1[key].append(file_name)
     return result_1
 
 
-result_3 = add_files_dirs_names(result_1, file_name)
+result_3 = add_files_dirs_names(result_1, 'testtw.qfw')
+print(result_3)
+
 
 # 4
 
-dir_name = 'to_test_dir'
 
-
-def create_dir(result_1, dir_name):
-    for value  in result_1["filenames"]:
+def create_dir(result_1: dict, dir_name: str):
+    for value in result_1["filenames"]:
         dir_list = os.listdir(dir_name)
         if not value in dir_list:
             with open(os.path.join(dir_name, value), 'w') as file:
@@ -69,21 +68,5 @@ def create_dir(result_1, dir_name):
     for value in result_1["dirnames"]:
         os.makedirs(os.path.join(dir_name, value), exist_ok=True)
 
-create_dir(result_1, dir_name)
 
-
-# функция сохдает файлы из заданой директории в изначальную
-# dir_name = 'from_test_dir'
-#
-#
-# def create_dir(result_1, dir_name):
-#     for filename in os.listdir(dir_name):
-#         for value in result_1.values():
-#             if filename not in value:
-#                 if os.path.isfile(os.path.join(dir_name, filename)):
-#                     shutil.copy(os.path.join(dir_name, filename), os.path.join(path, filename))
-#                 elif os.path.isdir(os.path.join(dir_name, filename)):
-#                     shutil.copytree(os.path.join(dir_name, filename), os.path.join(path, filename), dirs_exist_ok=True)
-#
-#
-# create_dir(result_1, dir_name)
+create_dir(result_1, 'to_test_dir')
