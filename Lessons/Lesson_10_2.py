@@ -17,7 +17,7 @@ for line in data.split('\n'):
         number = line.split()[1]
         numbers.append(number)
 
-print(numbers)
+        print(number)
 
 
 

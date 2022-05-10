@@ -7,8 +7,6 @@ class PlayWithFolder:
     def __init__(self, dirname):
         self.dirname = dirname
         self.create_dir()
-        self.create_files()
-        self.do_tanos_click()
 
     def create_dir(self):
         os.makedirs(self.dirname, exist_ok=True)
@@ -30,4 +28,4 @@ class PlayWithFolder:
             os.remove(filepath)
 
 
-worker = PlayWithFolder('alphabet_2')
+worker = PlayWithFolder('alphabet_3')

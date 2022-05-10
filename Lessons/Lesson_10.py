@@ -2,7 +2,7 @@
 # модуль os
 
 
-filename = "../Python_Intro/test.py"
+filename = "test.py"
 
 my_file = open(filename, 'r')   # 'r', 'w',  'rb', 'wb', ...
 data = my_file.read()
