@@ -2,10 +2,8 @@ import random
 import json
 import csv
 import argparse
-from argparse import ArgumentParser
 from typing import List, Dict, Union
 from datetime import datetime
-
 
 def _read_json_config_file(filename: str) -> Union[List, Dict]:
     with open(filename, 'r') as file:
@@ -36,13 +34,6 @@ def _write_csv_file(filename, data):
         writer.writerows(data)
 
 
-json_config = _read_json_config_file("config.json")
-json_logs = _read_json_logs_file('logs.json')
-csv_data = _read_csv_file('data.csv')
-
-
-# ADD LOGS
-
 def _add_logs(filename, actions):
     log = {f'{datetime.now()}': actions}
     with open(filename, "w") as file:
@@ -50,9 +41,13 @@ def _add_logs(filename, actions):
         json.dump(json_logs, file, indent=2)
 
 
-# NEW COURSE
+def return_course_now(csv_data) -> str:
+    for row in csv_data:
+        info = f"Course: {row['Course']}"
+        return info
 
-def do_new_course(course, delta):
+
+def do_new_course(course, delta, csv_data):
     new_course = round(random.uniform(course - delta, course + delta), 2)
     for row in csv_data:
         row["Course"] = new_course
@@ -61,16 +56,10 @@ def do_new_course(course, delta):
     _add_logs('logs.json', info)
 
 
-#
-
-def available(csv_file):
+def return_available(csv_file) -> str:
     for row in csv_file:
         info = f"USD: {row['USD_account']} - UAH: {row['UAH_account']}"
-        _add_logs('logs.json', info)
-        print(info)
-
-
-# BUY OR SELL DOLLARS
+        return info
 
 
 def buy_or_sell_dollars(usd_amount, csv_file, buy_or_sell):
@@ -80,7 +69,7 @@ def buy_or_sell_dollars(usd_amount, csv_file, buy_or_sell):
             if float(row["UAH_account"]) >= usd_amount * float(row['Course']):
                 row["USD_account"] = round(float(row["USD_account"]) + usd_amount, 2)
                 row["UAH_account"] = round(float(row["UAH_account"]) - uah_amount, 2)
-                info = f'buy {usd_amount} USD'
+                info = f'Buy {usd_amount} USD'
             else:
                 balance_required = round(usd_amount * float(row['Course']), 2)
                 info = f"UNAVAILABLE, REQUIRED BALANCE UAH {balance_required}, AVAILABLE {row['UAH_account']}"
@@ -90,15 +79,13 @@ def buy_or_sell_dollars(usd_amount, csv_file, buy_or_sell):
             if float(row["USD_account"]) >= usd_amount:
                 row["USD_account"] = round(float(row["USD_account"]) - usd_amount, 2)
                 row["UAH_account"] = round(float(row["UAH_account"]) + uah_amount, 2)
-                info = f'sell {usd_amount} USD'
+                info = f'Sell {usd_amount} USD'
             else:
                 info = f"UNAVAILABLE, REQUIRED BALANCE USD {usd_amount}, AVAILABLE {row['USD_account']}"
                 print(info)
-        _write_csv_file("data.csv", csv_file)
-        _add_logs('logs.json', info)
+    _write_csv_file("data.csv", csv_file)
+    _add_logs('logs.json', info)
 
-
-# BUY ALL DOLLARS
 
 def buy_or_sell_all_dollars(csv_file, buy_or_sell):
     for row in csv_file:
@@ -107,7 +94,7 @@ def buy_or_sell_all_dollars(csv_file, buy_or_sell):
             if float(row["UAH_account"]) != 0:
                 row["USD_account"] = round(float(row["USD_account"]) + all_usd_amount, 2)
                 row["UAH_account"] = 0.00
-                info = 'byu all dollars'
+                info = 'Byu all dollars'
             else:
                 info = "NO MORE UAS"
                 print(info)
@@ -116,40 +103,59 @@ def buy_or_sell_all_dollars(csv_file, buy_or_sell):
             if float(row["USD_account"]) != 0:
                 row["USD_account"] = 0.00
                 row["UAH_account"] = round(float(row["UAH_account"]) + all_uah_amount, 2)
-                info = 'sell all dollars'
+                info = 'Sell all dollars'
             else:
                 info = "NO MORE USD"
                 print(info)
-        _write_csv_file("data.csv", csv_file)
-        _add_logs('logs.json', info)
+    _write_csv_file("data.csv", csv_file)
+    _add_logs('logs.json', info)
 
 
-# RESTART
-
-def restart_data(csv_file):
+def restart_trader(csv_file):
     for row in csv_file:
-        row["USD_account"] = json_config['usd_account']
-        row["UAH_account"] = json_config['uah_account']
-        row["Course"] = json_config['initial_course']
+        row["USD_account"] = usd_account
+        row["UAH_account"] = uah_account
+        row["Course"] = initial_course
     _write_csv_file("data.csv", csv_file)
     with open('logs.json', 'w') as file:
         data = []
         json.dump(data, file)
 
 
-course = json_config['initial_course']
+json_config = _read_json_config_file("config.json")
+json_logs = _read_json_logs_file('logs.json')
+csv_data = _read_csv_file('data.csv')
+available_str = return_available(csv_data)
+course_now = return_course_now(csv_data)
+initial_course = json_config['initial_course']
+uah_account = json_config['uah_account']
+usd_account = json_config['usd_account']
 delta = json_config["delta"]
-usd_amount = 100
 
-# do_new_course(course, delta)
-# available(csv_data)
-# buy_or_sell_dollars(usd_amount, csv_data, 'buy')
-# buy_or_sell_all_dollars(csv_data, "buy")
-# restart_data(csv_data)
-
-print(123)
 parser = argparse.ArgumentParser()
-
+parser.add_argument("action")
+parser.add_argument("amount", nargs='?', default=0)
 args = parser.parse_args()
 
-print(args)
+if args.action == "RATE":
+    _add_logs('logs.json', course_now)
+    print(course_now)
+elif args.action == 'AVAILABLE':
+    _add_logs('logs.json', available_str)
+    print(available_str)
+elif args.action == 'BUY':
+    if args.amount == 'ALL':
+        buy_or_sell_all_dollars(csv_data, "buy")
+    else:
+        if float(args.amount) > 0:
+            buy_or_sell_dollars(float(args.amount), csv_data, 'buy')
+elif args.action == 'SELL':
+    if args.amount == 'ALL':
+        buy_or_sell_all_dollars(csv_data, "sell")
+    else:
+        if float(args.amount) > 0:
+            buy_or_sell_dollars(float(args.amount), csv_data, 'sell')
+elif args.action == 'NEXT':
+    do_new_course(initial_course, delta, csv_data)
+elif args.action == 'RESTART':
+    restart_trader(csv_data)
