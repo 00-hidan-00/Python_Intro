@@ -106,7 +106,7 @@ class Trader:
                     row["UAH_account"] = 0.00
                     info = 'Byu all dollars'
                 else:
-                    info = "NO MORE UAS"
+                    info = "NO MORE UAH"
                     print(info)
         self._write_csv_file()
         self._add_logs(info)
