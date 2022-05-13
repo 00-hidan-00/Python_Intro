@@ -7,8 +7,7 @@ from datetime import datetime
 
 
 class Trader:
-    def __init__(self, usd_amount):
-        self.usd_amount = float(usd_amount)
+    def __init__(self):
         self.config_json_file = 'config.json'
         self.logs_json_file = 'logs.json'
         self.data_csv_file = 'data.csv'
@@ -60,8 +59,8 @@ class Trader:
         new_course = round(random.uniform(self.initial_course - self.delta, self.initial_course + self.delta), 2)
         for row in self.csv_file_list:
             row["Course"] = new_course
-        self._write_csv_file()
         info = f'New course: {new_course}'
+        self._write_csv_file()
         self._add_logs(info)
 
     def return_available(self) -> str:
@@ -69,30 +68,36 @@ class Trader:
             info = f"USD: {row['USD_account']} - UAH: {row['UAH_account']}"
             return info
 
-    def buy_or_sell_dollars(self, buy_or_sell):
+    def buy_dollars(self, usd_amount, buy_or_sell):
         for row in self.csv_file_list:
-            uah_amount = self.usd_amount * float(row['Course'])
+            uah_amount = usd_amount * float(row['Course'])
             if buy_or_sell == 'buy':
-                if float(row["UAH_account"]) >= self.usd_amount * float(row['Course']):
-                    row["USD_account"] = round(float(row["USD_account"]) + self.usd_amount, 2)
+                if float(row["UAH_account"]) >= usd_amount * float(row['Course']):
+                    row["USD_account"] = round(float(row["USD_account"]) + usd_amount, 2)
                     row["UAH_account"] = round(float(row["UAH_account"]) - uah_amount, 2)
-                    info = f'Buy {round(self.usd_amount, 2)} USD'
+                    info = f'Buy {round(usd_amount, 2)} USD'
                 else:
-                    balance_required = round(self.usd_amount * float(row['Course']), 2)
+                    balance_required = round(usd_amount * float(row['Course']), 2)
                     info = f"UNAVAILABLE, REQUIRED BALANCE UAH {balance_required}, AVAILABLE {row['UAH_account']}"
-                    print(info)
-            elif buy_or_sell == 'sell':
-                if float(row["USD_account"]) >= self.usd_amount:
-                    row["USD_account"] = round(float(row["USD_account"]) - self.usd_amount, 2)
-                    row["UAH_account"] = round(float(row["UAH_account"]) + uah_amount, 2)
-                    info = f'Sell {round(self.usd_amount, 2)} USD'
-                else:
-                    info = f"UNAVAILABLE, REQUIRED BALANCE USD {self.usd_amount}, AVAILABLE {row['USD_account']}"
                     print(info)
         self._write_csv_file()
         self._add_logs(info)
 
-    def buy_or_sell_all_dollars(self, buy_or_sell):
+    def sell_dollars(self, usd_amount, buy_or_sell):
+        for row in self.csv_file_list:
+            uah_amount = usd_amount * float(row['Course'])
+            if buy_or_sell == 'sell':
+                if float(row["USD_account"]) >= usd_amount:
+                    row["USD_account"] = round(float(row["USD_account"]) - usd_amount, 2)
+                    row["UAH_account"] = round(float(row["UAH_account"]) + uah_amount, 2)
+                    info = f'Sell {round(usd_amount, 2)} USD'
+                else:
+                    info = f"UNAVAILABLE, REQUIRED BALANCE USD {usd_amount}, AVAILABLE {row['USD_account']}"
+                    print(info)
+        self._write_csv_file()
+        self._add_logs(info)
+
+    def buy_all_dollars(self, buy_or_sell):
         for row in self.csv_file_list:
             if buy_or_sell == 'buy':
                 all_usd_amount = round(float(row["UAH_account"]) / float(row['Course']), 2)
@@ -103,7 +108,12 @@ class Trader:
                 else:
                     info = "NO MORE UAS"
                     print(info)
-            elif buy_or_sell == 'sell':
+        self._write_csv_file()
+        self._add_logs(info)
+
+    def sell_all_dollars(self, buy_or_sell):
+        for row in self.csv_file_list:
+            if buy_or_sell == 'sell':
                 all_uah_amount = round(float(row["USD_account"]) * float(row['Course']), 2)
                 if float(row["USD_account"]) != 0:
                     row["USD_account"] = 0.00
@@ -131,7 +141,7 @@ parser.add_argument("action")
 parser.add_argument("amount", nargs='?', default=0)
 args = parser.parse_args()
 try:
-    trader = Trader(args.amount) if args.amount != "ALL" else Trader(0)
+    trader = Trader()
     if args.action == "RATE":
         trader._add_logs(trader.return_course_now())
         print(trader.return_course_now())
@@ -140,18 +150,18 @@ try:
         print(trader.return_available())
     elif args.action == 'BUY':
         if args.amount == 'ALL':
-            trader.buy_or_sell_all_dollars("buy")
+            trader.buy_all_dollars("buy")
         else:
             if float(args.amount) > 0:
-                trader.buy_or_sell_dollars('buy')
+                trader.buy_dollars(float(args.amount), 'buy')
             else:
                 print("I don't work with negative numbers")
     elif args.action == 'SELL':
         if args.amount == 'ALL':
-            trader.buy_or_sell_all_dollars("sell")
+            trader.sell_all_dollars("sell")
         else:
             if float(args.amount) > 0:
-                trader.buy_or_sell_dollars('sell')
+                trader.sell_dollars(float(args.amount), 'sell')
             else:
                 print("I don't work with negative numbers")
     elif args.action == 'NEXT':
