@@ -140,8 +140,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument("action")
 parser.add_argument("amount", nargs='?', default=0)
 args = parser.parse_args()
+trader = Trader()
 try:
-    trader = Trader()
     if args.action == "RATE":
         trader._add_logs(trader.return_course_now())
         print(trader.return_course_now())
