@@ -170,4 +170,3 @@ try:
         trader.restart_trader()
 except ValueError:
     print('Something went wrong :(')
-
