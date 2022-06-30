@@ -9,13 +9,18 @@ load_dotenv()
 API_KEY = os.getenv("API_KEY")
 API_SECRET = os.getenv("API_SECRET")
 
-
-
-print(API_KEY,API_SECRET)
+# print(API_KEY, API_SECRET)
 
 auth = OAuth1(API_KEY, API_SECRET)
 
-endpoint = "http://api.thenounproject.com/icon/1"
+endpoint = "http://api.thenounproject.com/icon/2"
 
 response = requests.get(endpoint, auth=auth)
-print(response.content)
+result = response.json()
+# print(response.content)
+icon_url = result["icon"]["icon_url"]
+
+icon_response = requests.get(icon_url)
+
+with open("test.svg", 'wb')as file:
+    file.write(icon_response.content)
