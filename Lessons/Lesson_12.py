@@ -9,11 +9,11 @@ import csv
 ##################### strings
 
 
-# test_dict = '{"to_test_dir": 123}'
-# data = json.loads(test_dict)
-# data = {'to_test_dir': 123}
-# data['to_test_dir'] = 321
-# test_dict_2 = json.dumps(data)
+test_dict = '{"to_test_dir": 123}'
+data = json.loads(test_dict)
+data = {'to_test_dir': 123}
+data['to_test_dir'] = 321
+test_dict_2 = json.dumps(data)
 
 
 ############################################################
@@ -48,29 +48,29 @@ print(data, type(data))
 
 # csv
 
-# def read_csv_file(filename: str) -> list:
-#     data = []
-#     with open(filename, 'r') as file:
-#         reader = csv.reader(file, delimiter=',')
-#         for row in reader:
-#             data.append(row)
-#     return data
-#
-#
-# def write_csv_file(filename, data):
-#     with open(filename, 'w') as file:
-#         writer = csv.writer(file)
-#         writer.writerows(data)
-#
-#
-# filename = "test.csv"
-# data = read_csv_file(filename)
-# header = data.pop(0)
-# # header.append('Total')
-# for row in data:
-#     row.append(int(row[1]) + int(row[2]))
-#
-# data = [header] + data
+def read_csv_file(filename: str) -> list:
+    data = []
+    with open(filename, 'r') as file:
+        reader = csv.reader(file, delimiter=',')
+        for row in reader:
+            data.append(row)
+    return data
+
+
+def write_csv_file(filename, data):
+    with open(filename, 'w') as file:
+        writer = csv.writer(file)
+        writer.writerows(data)
+
+
+filename = "test.csv"
+data = read_csv_file(filename)
+header = data.pop(0)
+# header.append('Total')
+for row in data:
+    row.append(int(row[1]) + int(row[2]))
+
+data = [header] + data
 # write_csv_file("test.csv", data)
 
 
@@ -100,20 +100,20 @@ data = read_csv_file_as_dict(filename)
 for row in data:
     row["Total"] = int(row["Price"]) + int(row["Sum"])
 print(data)
-write_csv_file_as_dict("test.csv", data)
+# write_csv_file_as_dict("test.csv", data)
 
 
 ############################################################
 
 # assert, raise
 
-# def some_func(val_1, val_2):
-#     if val_1 < 0 or val_2 < 0:
-#         raise Exception('Ошибка данных')
-#     return val_1 + val_2
-#
-#
-# result = some_func(-1000, 200)
-#
-# assert result > 0, 'Ошибка данных'
-# print("OK")
+def some_func(val_1, val_2):
+    if val_1 < 0 or val_2 < 0:
+        raise Exception('Ошибка данных')
+    return val_1 + val_2
+
+
+result = some_func(-1000, 200)
+
+assert result > 0, 'Ошибка данных'
+print("OK")

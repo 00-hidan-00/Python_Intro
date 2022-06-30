@@ -62,7 +62,7 @@ test_dict.update(my_dict)
 
 get_value = test_dict.get('new_key')
 get_value_2 = test_dict['new_key']
-разница
+# разница
 get_value = test_dict.get('key', -1)    # НЕ получим ошибку
 get_value_2 = test_dict['key']      # получим ошибку
 

@@ -6,32 +6,32 @@
 from typing import Optional
 
 
-# class Person:  # класс
-#     name: Optional[str] = None
-#     age: int = 0
-#     job: dict = {'Title': 'Programmer',
-#                  'Company': 'GoWombat'
-#                  }
-#
-#
-# person_1 = Person()  # экземпляр класса ( представитель объекта )
-# person_2 = Person()
-#
-# person_1.name = 'John'  # атрибут экземпляра класса
-# person_1.age = 23
-#
-# person_2.name = 'Anna'
-# person_2.age = 30
-# person_2.gender = 'male'  # добавили атрибут в экземпляр класса
-#
-# person_3 = Person()
-# Person.name = 'Jack'
-# person_4 = Person()
-#
-# print(person_1.name, person_1.age)
-# print(person_2.name, person_2.age, person_2.gender)
-# print(person_3.name, person_3.age)
-# print(person_4.name, person_4.age, person_4.job['Company'])
+class Person:  # класс
+    name: Optional[str] = None
+    age: int = 0
+    job: dict = {'Title': 'Programmer',
+                 'Company': 'GoWombat'
+                 }
+
+
+person_1 = Person()  # экземпляр класса ( представитель объекта )
+person_2 = Person()
+
+person_1.name = 'John'  # атрибут экземпляра класса
+person_1.age = 23
+
+person_2.name = 'Anna'
+person_2.age = 30
+person_2.gender = 'male'  # добавили атрибут в экземпляр класса
+
+person_3 = Person()
+Person.name = 'Jack'
+person_4 = Person()
+
+print(person_1.name, person_1.age)
+print(person_2.name, person_2.age, person_2.gender)
+print(person_3.name, person_3.age)
+print(person_4.name, person_4.age, person_4.job['Company'])
 
 #############################################################
 

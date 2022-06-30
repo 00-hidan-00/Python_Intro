@@ -38,7 +38,7 @@ class PlayWithFolder:
 worker = PlayWithFolder('alphabet_3')
 worker.create_files()
 print(worker.dirname)
-worker.dirname = "aaa"
+worker.dirname("aaa")
 # worker._dirname = 'AAA'
 # worker._PlayWithFolder__create_dir()
 print(dir(worker))

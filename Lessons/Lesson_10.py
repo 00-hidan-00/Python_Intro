@@ -7,7 +7,7 @@ filename = "test.py"
 my_file = open(filename, 'r')   # 'r', 'w',  'rb', 'wb', ...
 data = my_file.read()
 my_file.close()
-print(data)
+# print(data)
 
 with open(filename, 'r') as my_file:
     # data = my_file.read()
@@ -22,6 +22,7 @@ data.append('#TEST TEXT \n')
 
 with open(filename.replace('.py', '_2.py'), 'w') as txt_file:
     txt_file.writelines(data)
+    print(txt_file)
 
 
 

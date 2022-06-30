@@ -35,63 +35,63 @@ email = generation_email(surnames=surnames_date, domains=domains_date)    # им
 
 ###############################################
 
-# def read_txt_file(filename='to_test_dir.txt', debug_mode=DEBUG_MODE):
-#     with open(filename, 'r', encoding='utf-8') as my_file:
-#         data = my_file.read()
-#     if debug_mode:
-#         print(data)
-#     return data
-# data = read_txt_file()
-#
-# ###############################################
-#
-# def get_args(*args, **kwargs):
-#     for arg_value in args:
-#         print(arg_value)
-#     for kwarg_value in kwargs:
-#         print(kwarg_value, kwargs[kwarg_value])
-#
-# get_args(1, 2, 'qwe', name="John", age=12)
-#
-# ###############################################
-#
-# def read_txt_file(filename: str = 'to_test_dir.txt', debug_mode: bool = True) -> str:
-#     with open(filename, 'r', encoding='utf-8') as my_file:
-#         data = my_file.read()
-#     if debug_mode:
-#         print(data)
-#     return data
-# data = read_txt_file("test.txt", True)
-#
-# ###############################################
-# # импорт функций
-#
-#
-# from Lessons.utils.functions import read_txt_file_as_str
-#
-# data = read_txt_file_as_str("test.txt")
-# print(f"{__name__=}")
-# print(data)
-#
-# ###############################################
-#
-# import os
-#
-# path = '../HomeWork'
-# list_dir = os.listdir(path)
-# # print(list_dir)
-#
-# filename = 'Lesson_test.txt'
-# base_dir = ''
-# # data = read_txt_file_as_str(f'{path}/{base_dir}/{filename}')
-# # data = read_txt_file_as_str(os.path.join(path, base_dir, filename))
-# print(data)
-#
-# for filename in list_dir:
-#     filepath = os.path.join(path, filename)
-#     if os.path.isdir(filepath):
-#         print(filepath)
-#
-#
-#
+def read_txt_file(filename='to_test_dir.txt', debug_mode=DEBUG_MODE):
+    with open(filename, 'r', encoding='utf-8') as my_file:
+        data = my_file.read()
+    if debug_mode:
+        print(data)
+    return data
+data = read_txt_file()
+
+###############################################
+
+def get_args(*args, **kwargs):
+    for arg_value in args:
+        print(arg_value)
+    for kwarg_value in kwargs:
+        print(kwarg_value, kwargs[kwarg_value])
+
+get_args(1, 2, 'qwe', name="John", age=12)
+
+###############################################
+
+def read_txt_file(filename: str = 'to_test_dir.txt', debug_mode: bool = True) -> str:
+    with open(filename, 'r', encoding='utf-8') as my_file:
+        data = my_file.read()
+    if debug_mode:
+        print(data)
+    return data
+data = read_txt_file("test.txt", True)
+
+###############################################
+# импорт функций
+
+
+from Lessons.utils.functions import read_txt_file_as_str
+
+data = read_txt_file_as_str("test.txt")
+print(f"{__name__=}")
+print(data)
+
+###############################################
+
+import os
+
+path = '../HomeWork'
+list_dir = os.listdir(path)
+print(list_dir)
+
+filename = 'Lesson_test.txt'
+base_dir = ''
+data = read_txt_file(f'{path}/{base_dir}/{filename}')
+data = read_txt_file(os.path.join(path, base_dir, filename))
+print(data)
+
+for filename in list_dir:
+    filepath = os.path.join(path, filename)
+    if os.path.isdir(filepath):
+        print(filepath)
+
+
+
 # # в 11 уроке доп к домашке в 10

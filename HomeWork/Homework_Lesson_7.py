@@ -23,8 +23,8 @@ for index in my_int_str[::-1]:
 
 
 # V2.0
-# result = len(my_int_str) - len(my_int_str.rstrip('0'))
-#
+result = len(my_int_str) - len(my_int_str.rstrip('0'))
+
 print(result)
 
 
@@ -71,7 +71,7 @@ my_list.append(my_list.pop(0))
 print(my_list)
 
 # 6. Дана строка в которой есть числа (разделяются пробелами).
-# Например "43 больше чем 34 но меньше чем 56". Найти сумму ВСЕХ ЧИСЕЛ (А НЕ ЦИФР) в этой строке.
+# Например "43 больше чем 34, но меньше чем 56". Найти сумму ВСЕХ ЧИСЕЛ (А НЕ ЦИФР) в этой строке.
 # Для данного примера ответ - 133. (используйте split и проверку isdigit)
 
 # V1
@@ -177,4 +177,4 @@ res_list = []
 for symbol in set(my_str_1).intersection(set(my_str_2)):
     if my_str_1.count(symbol) == 1 and my_str_2.count(symbol) == 1:
         res_list.append(symbol)
-print(symbol)
+print(res_list)

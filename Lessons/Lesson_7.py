@@ -62,7 +62,8 @@ print(my_set_2)
 
 # операции с множествами
 
-
+my_set_1 = set('12345')
+my_set_2 = {"1",2,"3"}
 result_union = my_set_1.union(my_set_2)             # объединение
 print(result_union)
 
@@ -70,7 +71,7 @@ result_intersection = my_set_1.intersection(my_set_2)   # пересиченик
 print(result_intersection)
 
 result_difference = my_set_1.difference(my_set_2)   # разница ( вычетание )
-print(result_intersection)
+print(result_difference)
 
 
 my_str = 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqa'

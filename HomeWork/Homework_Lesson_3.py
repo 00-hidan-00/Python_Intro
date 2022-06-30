@@ -64,17 +64,17 @@ if input_case in "1234":
         value_2 = float(input("Введи второе число:"))
         if input_case == '1':
             result = value_1 + value_2
-            sign = '+'
+            symbol = '+'
         elif input_case == '2':
             result = value_1 - value_2
-            sign = '-'
+            symbol = '-'
         elif input_case == '3':
             result = value_1 * value_2
-            sign = '*'
+            symbol = '*'
         elif input_case == '4':
             result = value_1 / value_2
-            sign = '/'
-        print(f'{value_1} {sign} {value_2} = {result}')
+            symbol = '/'
+        print(f'{value_1} {symbol} {value_2} = {result}')
     except ValueError:
         print('Это не похоже на цирфы :(')
     except ZeroDivisionError:

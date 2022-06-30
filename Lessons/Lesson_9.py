@@ -5,51 +5,51 @@
 
 ### модули
 
-# import string
+import string
 
-# alphabet = ''.join([chr(idx) for idx in range(ord('a'), ord('z') + 1)])
+alphabet = ''.join([chr(idx) for idx in range(ord('a'), ord('z') + 1)])
 # создали алфавит
 
-# alphabet = 'qwertyuiopasdfghjklzxcvbnm'
+alphabet = 'qwertyuiopasdfghjklzxcvbnm'
 
-# alphabet = string.ascii_lowercase
+alphabet = string.ascii_lowercase
 
-# print(alphabet)
+print(alphabet)
 
 #####################################
 
 ## типы импортов
 
 # 1
-# import string
-#
-# alphabet = string.ascii_letters
-# print(alphabet)
+import string
+
+alphabet = string.ascii_letters
+print(alphabet)
 
 # 2
-# from string import ascii_lowercase
-# alphabet = ascii_lowercase
-# print(alphabet)
+from string import ascii_lowercase
+alphabet = ascii_lowercase
+print(alphabet)
 
 # 3
-# from string import ascii_lowercase as alphabet
-# from string import ascii_uppercase as ALPHABET
-# print(alphabet, ALPHABET)
+from string import ascii_lowercase as alphabet
+from string import ascii_uppercase as ALPHABET
+print(alphabet, ALPHABET)
 
 #####################################
 
 # 1
-# import random
+import random
 
-# value = random.randint(0,4)
-# print(value)
+value = random.randint(0,4)
+print(value)
 
-# my_cases = [True, False,100,'qwerty']
-# case = random.choice(my_cases)
-# print(case)
+my_cases = [True, False,100,'qwerty']
+case = random.choice(my_cases)
+print(case)
 
-# random.shuffle(my_cases)
-# print(my_cases)
+random.shuffle(my_cases)
+print(my_cases)
 
 # 2
 
