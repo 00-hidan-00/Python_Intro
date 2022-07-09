@@ -1,9 +1,9 @@
-import random
-import json
-import csv
 import argparse
-from typing import List, Dict, Union
+import csv
+import json
+import random
 from datetime import datetime
+from typing import List, Dict, Union
 
 
 class Trader:
@@ -83,7 +83,6 @@ class Trader:
         self._write_csv_file()
         self._add_logs(info)
 
-
     def sell_dollars(self, usd_amount):
         for row in self.csv_file_list:
             uah_amount = usd_amount * float(row['Course'])
@@ -99,7 +98,6 @@ class Trader:
         self._write_csv_file()
         self._add_logs(info)
 
-
     def buy_all_dollars(self):
         for row in self.csv_file_list:
             all_usd_amount = round(float(row["UAH_account"]) / float(row['Course']), 2)
@@ -113,7 +111,6 @@ class Trader:
         self._write_csv_file()
         self._add_logs(info)
 
-
     def sell_all_dollars(self):
         for row in self.csv_file_list:
             all_uah_amount = round(float(row["USD_account"]) * float(row['Course']), 2)
@@ -126,7 +123,6 @@ class Trader:
                 print(info)
         self._write_csv_file()
         self._add_logs(info)
-
 
     def restart_trader(self):
         for row in self.csv_file_list:

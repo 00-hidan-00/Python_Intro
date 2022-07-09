@@ -51,8 +51,7 @@ class Person:
         self.age += 1
 
     def get_name_uppercase(self):
-        name_uppercase = self.name.upper()
-        return name_uppercase
+        return self.name.upper()
 
 
 my_name = "Davyd"
