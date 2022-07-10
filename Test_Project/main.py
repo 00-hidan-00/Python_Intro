@@ -1,4 +1,4 @@
-from Test_Project.app import main_function
+from Test_Project.app.main import main_function
 
 if __name__ == '__main__':
     main_function()

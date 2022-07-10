@@ -23,8 +23,3 @@ class Human:
     def speak(self):
         return f'i\'m {self.name}. I\'m {self.age}'
 
-
-class Animal:
-    def __init__(self, name:T_Name, age: int):
-        self.name = name
-        self.age = age
